@@ -23,7 +23,8 @@ export async function sendContactMessage(
     return { error: "Falta información requerida" };
   }
 
-  const fromEmail = process.env.RESEND_FROM_EMAIL || "Monzon Labs <onboarding@resend.dev>";
+  const fromEmail = process.env.RESEND_FROM_EMAIL || "Monzon Labs <danny@monzonlabs.com>";
+//  const fromEmail = process.env.RESEND_FROM_EMAIL || "Monzon Labs <onboarding@resend.dev>";
   const toEmail = process.env.CONTACT_TO_EMAIL || 
   "dmonzon@gmail.com";
   //"danny@monzonlabs.com";
