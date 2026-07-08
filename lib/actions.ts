@@ -24,8 +24,9 @@ export async function sendContactMessage(
   }
 
   const fromEmail = process.env.RESEND_FROM_EMAIL || "Monzon Labs <onboarding@resend.dev>";
-  const toEmail = process.env.CONTACT_TO_EMAIL || "dmonzon@gmail.com";
-  //"danny@monzonlabs.com";
+  const toEmail = process.env.CONTACT_TO_EMAIL || 
+  //"dmonzon@gmail.com";
+  "danny@monzonlabs.com";
 
   const html = `
     <h2>Nuevo mensaje de contacto</h2>
