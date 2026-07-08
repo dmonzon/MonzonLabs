@@ -7,7 +7,7 @@ interface ServiceItem {
   t: string;
   p: string;
   d: string;
-  inc: string[];
+  inc: readonly string[];
   note: string;
 }
 
