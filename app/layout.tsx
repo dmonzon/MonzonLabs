@@ -25,7 +25,6 @@ export const metadata: Metadata = {
       { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
     ],
     apple: "/apple-touch-icon-180.png",
-    x: { card: "summary_large_image", images: ["/og-image-es.png"] },
   },
 };
 
