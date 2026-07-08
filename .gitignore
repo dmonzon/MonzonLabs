@@ -1,0 +1,21 @@
+# Dependencias
+node_modules/
+
+# Next.js archivos de compilación
+.next/
+out/
+
+# Variables de entorno (¡Muy importante por seguridad!)
+.env
+.env.local
+.env.production.local
+.env.development.local
+
+# Caché y logs
+.eslintcache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+copy/

@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ---- CTA buttons ---- */
+.ml-cta {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+}
+.ml-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(13, 27, 51, 0.18);
+}
+.ml-cta:active {
+  transform: translateY(0);
+}
+
+/* ---- Service cards ---- */
+.ml-card {
+  border: 1px solid #e7e4dc;
+  box-shadow: 0 1px 2px rgba(13, 27, 51, 0.04);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.ml-card:hover {
+  transform: translateY(-5px);
+  border-color: #d4a853;
+  box-shadow: 0 14px 30px rgba(13, 27, 51, 0.1);
+}
+.ml-card .ml-price {
+  transition: transform 0.22s ease;
+  display: inline-block;
+}
+.ml-card:hover .ml-price {
+  transform: scale(1.08);
+}
+
+/* ---- Accordion slide ---- */
+.ml-acc {
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+/* ---- Nav links: underline animada ---- */
+.ml-nav {
+  position: relative;
+  padding-bottom: 2px;
+}
+.ml-nav::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: #d4a853;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s ease;
+}
+.ml-nav:hover::after {
+  transform: scaleX(1);
+}
+
+/* ---- Logo: pulso del nodo dorado ---- */
+@keyframes ml-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+.ml-logowrap:hover .ml-goldnode {
+  animation: ml-pulse 0.9s ease-in-out infinite;
+}
+
+/* ---- Proceso: nodos que se encienden ---- */
+.ml-node {
+  transition: transform 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
+}
+.ml-step:hover .ml-node {
+  transform: scale(1.35);
+  background-color: #d4a853 !important;
+  box-shadow: 0 0 0 6px rgba(212, 168, 83, 0.25) !important;
+}
+.ml-step:hover h3 {
+  color: #d4a853 !important;
+}
+.ml-step h3 {
+  transition: color 0.22s ease;
+}
+
+/* ---- Reveal on scroll ---- */
+.ml-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.ml-reveal.ml-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---- Focus visible ---- */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #d4a853;
+  outline-offset: 2px;
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .ml-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .ml-cta,
+  .ml-card,
+  .ml-node,
+  .ml-nav::after,
+  .ml-acc,
+  .ml-price {
+    transition: none !important;
+  }
+  .ml-logowrap:hover .ml-goldnode {
+    animation: none;
+  }
+}
