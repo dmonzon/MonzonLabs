@@ -96,7 +96,66 @@ export const T = {
       error: "Error al enviar el mensaje. Intenta de nuevo.",
       direct: "San Juan, Puerto Rico · Servicio remoto a todo EE.UU.",
     },
-    footer: { rights: "Todos los derechos reservados", tags: "Automatización · Desarrollo Web · Consultoría IT" },
+    footer: { rights: "Todos los derechos reservados", tags: "Automatización · Desarrollo Web · Consultoría IT", privacy: "Política de Privacidad" },
+    privacy: {
+      title: "Política de Privacidad",
+      updated: "Última actualización: julio de 2026",
+      intro: "En Monzon Labs respetamos tu privacidad. Esta política explica, en lenguaje claro, qué información recopilamos cuando visitas monzonlabs.com y cómo la usamos.",
+      sections: [
+        {
+          heading: "Qué información recopilamos",
+          paragraphs: [
+            "**Formulario de contacto.** Si nos escribes a través del formulario, recopilamos los datos que tú nos proporcionas: nombre, correo electrónico, teléfono (opcional), el tipo de servicio que te interesa y tu mensaje.",
+            "**Estadísticas de uso del sitio.** Usamos Vercel Analytics para entender cuántas personas visitan el sitio y qué páginas ven. Esta herramienta **no usa cookies** y no recopila información que te identifique personalmente: los datos se agregan de forma anónima (por ejemplo, país de origen, tipo de dispositivo y páginas visitadas).",
+            "Este sitio **no usa cookies de rastreo ni de publicidad**.",
+          ],
+        },
+        {
+          heading: "Cómo usamos tu información",
+          paragraphs: [
+            "Usamos los datos del formulario únicamente para **responder a tu consulta y dar seguimiento a tu solicitud**. Tu mensaje llega directamente a nuestro correo electrónico. No lo almacenamos en bases de datos adicionales, no lo usamos para enviarte publicidad no solicitada, y **nunca vendemos ni compartimos tu información con terceros para fines de marketing**.",
+          ],
+        },
+        {
+          heading: "Servicios de terceros",
+          paragraphs: [
+            "Para operar el sitio utilizamos proveedores que procesan datos de forma limitada en nuestro nombre:",
+            "- **Vercel** (hosting del sitio y analítica anónima)\n- **Resend** (entrega del mensaje del formulario a nuestro correo)\n- **Cloudflare** (DNS y seguridad del dominio)",
+            "Cada uno de estos proveedores mantiene sus propias políticas de privacidad y medidas de seguridad estándar de la industria.",
+          ],
+        },
+        {
+          heading: "Retención de datos",
+          paragraphs: [
+            "Los mensajes recibidos se conservan en nuestro correo el tiempo necesario para atender tu consulta y mantener el historial de comunicación comercial. Puedes pedirnos que eliminemos tu información en cualquier momento.",
+          ],
+        },
+        {
+          heading: "Tus derechos",
+          paragraphs: [
+            "Puedes solicitarnos en cualquier momento acceder, corregir o eliminar la información que nos hayas enviado. Escríbenos a **danny@monzonlabs.com** y lo procesamos sin complicaciones.",
+          ],
+        },
+        {
+          heading: "Menores de edad",
+          paragraphs: [
+            "Este sitio está dirigido a negocios y profesionales. No recopilamos intencionalmente información de menores de 18 años.",
+          ],
+        },
+        {
+          heading: "Cambios a esta política",
+          paragraphs: [
+            "Si esta política cambia, publicaremos la versión actualizada en esta página con su nueva fecha.",
+          ],
+        },
+        {
+          heading: "Contacto",
+          paragraphs: [
+            "¿Preguntas sobre esta política? Escríbenos a **danny@monzonlabs.com**.",
+          ],
+        },
+      ],
+    },
   },
 
   en: {
@@ -196,7 +255,66 @@ export const T = {
       error: "Error sending message. Please try again.",
       direct: "San Juan, Puerto Rico · Remote service across the U.S.",
     },
-    footer: { rights: "All rights reserved", tags: "Automation · Web Development · IT Consulting" },
+    footer: { rights: "All rights reserved", tags: "Automation · Web Development · IT Consulting", privacy: "Privacy Policy" },
+    privacy: {
+      title: "Privacy Policy",
+      updated: "Last updated: July 2026",
+      intro: "At Monzon Labs, we respect your privacy. This policy explains, in plain language, what information we collect when you visit monzonlabs.com and how we use it.",
+      sections: [
+        {
+          heading: "What information we collect",
+          paragraphs: [
+            "**Contact form.** If you reach out through our form, we collect the information you provide: name, email, phone (optional), the type of service you're interested in, and your message.",
+            "**Site usage statistics.** We use Vercel Analytics to understand how many people visit the site and which pages they view. This tool **does not use cookies** and does not collect personally identifiable information: data is aggregated anonymously (for example, country of origin, device type, and pages visited).",
+            "This site **does not use tracking or advertising cookies**.",
+          ],
+        },
+        {
+          heading: "How we use your information",
+          paragraphs: [
+            "We use form data solely to **respond to your inquiry and follow up on your request**. Your message goes directly to our email inbox. We do not store it in additional databases, we do not use it to send you unsolicited advertising, and **we never sell or share your information with third parties for marketing purposes**.",
+          ],
+        },
+        {
+          heading: "Third-party services",
+          paragraphs: [
+            "To operate the site, we rely on providers that process data in a limited way on our behalf:",
+            "- **Vercel** (site hosting and anonymous analytics)\n- **Resend** (delivery of form messages to our inbox)\n- **Cloudflare** (domain DNS and security)",
+            "Each of these providers maintains its own privacy policy and industry-standard security measures.",
+          ],
+        },
+        {
+          heading: "Data retention",
+          paragraphs: [
+            "Messages we receive are kept in our inbox for as long as needed to handle your inquiry and maintain our business communication history. You can ask us to delete your information at any time.",
+          ],
+        },
+        {
+          heading: "Your rights",
+          paragraphs: [
+            "You may request access to, correction of, or deletion of any information you've sent us at any time. Email us at **danny@monzonlabs.com** and we'll take care of it.",
+          ],
+        },
+        {
+          heading: "Children",
+          paragraphs: [
+            "This site is intended for businesses and professionals. We do not knowingly collect information from anyone under 18.",
+          ],
+        },
+        {
+          heading: "Changes to this policy",
+          paragraphs: [
+            "If this policy changes, we will post the updated version on this page with a new date.",
+          ],
+        },
+        {
+          heading: "Contact",
+          paragraphs: [
+            "Questions about this policy? Email us at **danny@monzonlabs.com**.",
+          ],
+        },
+      ],
+    },
   },
 } as const;
 

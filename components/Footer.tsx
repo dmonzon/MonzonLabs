@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Mark from "./Mark";
 import { NAVY, GOLD, PAPER } from "@/lib/theme";
 import { Translation } from "@/lib/i18n";
@@ -21,9 +22,18 @@ export default function Footer({ t }: FooterProps) {
         <p className="text-xs" style={{ color: "#8C95A5" }}>
           {t.footer.tags}
         </p>
-        <p className="text-xs" style={{ color: "#8C95A5" }}>
-          © 2026 Monzon Labs · {t.footer.rights}
-        </p>
+        <div className="flex items-center gap-4">
+          <Link
+            href="/privacidad"
+            className="text-xs hover:underline"
+            style={{ color: GOLD }}
+          >
+            {t.footer.privacy}
+          </Link>
+          <p className="text-xs" style={{ color: "#8C95A5" }}>
+            © 2026 Monzon Labs · {t.footer.rights}
+          </p>
+        </div>
       </div>
     </footer>
   );
