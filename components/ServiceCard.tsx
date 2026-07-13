@@ -34,17 +34,9 @@ export default function ServiceCard({ item, more, less }: ServiceCardProps) {
       className="ml-card rounded-2xl p-6 md:p-8 flex flex-col"
       style={{ backgroundColor: "#FFFFFF" }}
     >
-      <div className="flex items-baseline justify-between gap-4 flex-wrap">
-        <h4 className="text-lg font-bold" style={{ color: NAVY }}>
-          {item.t}
-        </h4>
-        <span
-          className="ml-price text-sm font-bold tracking-wide"
-          style={{ color: GOLD }}
-        >
-          {item.p}
-        </span>
-      </div>
+      <h4 className="text-lg font-bold" style={{ color: NAVY }}>
+        {item.t}
+      </h4>
       <p className="mt-2 text-sm leading-relaxed" style={{ color: INKSOFT }}>
         {item.d}
       </p>
@@ -62,7 +54,15 @@ export default function ServiceCard({ item, more, less }: ServiceCardProps) {
       </button>
 
       <div className="ml-acc" style={{ maxHeight: open ? 600 : 0 }}>
-        <ul className="space-y-2 pt-4">
+        <div className="mb-4 pt-4">
+          <span
+            className="inline-block text-sm font-bold tracking-wide"
+            style={{ color: GOLD }}
+          >
+            {item.p}
+          </span>
+        </div>
+        <ul className="space-y-2">
           {item.inc.map((li, i) => (
             <li key={i} className="flex text-sm leading-relaxed" style={{ color: "#3A4453" }}>
               <NodeDot />
