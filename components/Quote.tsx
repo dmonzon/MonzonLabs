@@ -406,16 +406,8 @@ function EstimateView({
         : `${formatUSD(est.monthlyMin)} – ${formatUSD(est.monthlyMax)}`
       : null;
 
-  // Texto plano para el correo
-  const summaryText = [
-    `${category.label} › ${product.label}`,
-    ...summaryLines,
-    "—",
-    oneTime ? `${ui.estimateTitle} (${ui.oneTime}): ${oneTime}` : "",
-    monthly ? `${ui.estimateTitle} (${ui.perMonth}): ${monthly}` : "",
-  ]
-    .filter(Boolean)
-    .join("\n");
+  // Detalle de selecciones (texto plano para el correo/propuesta)
+  const summaryText = summaryLines.join("\n");
 
   const [state, formAction, isPending] = useActionState(sendQuoteRequest, {});
 
