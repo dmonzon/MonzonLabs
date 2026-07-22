@@ -59,6 +59,61 @@ export async function sendContactMessage(
   }
 }
 
+export async function sendQuoteRequest(
+  _prevState: ContactFormState | undefined,
+  formData: FormData
+): Promise<ContactFormState> {
+  const name = (formData.get("name") as string)?.trim();
+  const email = (formData.get("email") as string)?.trim();
+  const phone = (formData.get("phone") as string)?.trim() || "";
+  const notes = (formData.get("notes") as string)?.trim() || "";
+  const lang = (formData.get("lang") as string)?.trim() || "es";
+  const category = (formData.get("category") as string)?.trim() || "";
+  const product = (formData.get("product") as string)?.trim() || "";
+  const estimate = (formData.get("estimate") as string)?.trim() || "";
+  const summary = (formData.get("summary") as string)?.trim() || "";
+
+  if (!name || !email) {
+    return { error: "Falta información requerida" };
+  }
+
+  const fromEmail = process.env.RESEND_FROM_EMAIL || "Monzon Labs <danny@monzonlabs.com>";
+  const toEmail = process.env.CONTACT_TO_EMAIL || "dmonzon@gmail.com";
+
+  const html = `
+    <h2>Nueva cotización desde el sitio</h2>
+    <p><strong>Nombre:</strong> ${escapeHtml(name)}</p>
+    <p><strong>Correo:</strong> ${escapeHtml(email)}</p>
+    ${phone ? `<p><strong>Teléfono:</strong> ${escapeHtml(phone)}</p>` : ""}
+    <p><strong>Idioma:</strong> ${escapeHtml(lang.toUpperCase())}</p>
+    <hr />
+    <p><strong>Servicio:</strong> ${escapeHtml(category)} › ${escapeHtml(product)}</p>
+    <p><strong>Estimado:</strong> ${escapeHtml(estimate)}</p>
+    <p><strong>Detalle:</strong></p>
+    <pre>${escapeHtml(summary)}</pre>
+    ${notes ? `<p><strong>Comentarios:</strong></p><pre>${escapeHtml(notes)}</pre>` : ""}
+  `;
+
+  try {
+    const result = await resend.emails.send({
+      from: fromEmail,
+      to: toEmail,
+      replyTo: email,
+      subject: `Nueva cotización: ${name} — ${product || category}`,
+      html,
+    });
+
+    if (result.error) {
+      return { error: "No se pudo enviar la cotización. Intenta de nuevo." };
+    }
+
+    return { ok: true };
+  } catch (err) {
+    console.error("Error enviando cotización:", err);
+    return { error: "Error al enviar la cotización." };
+  }
+}
+
 function escapeHtml(text: string): string {
   const map: { [key: string]: string } = {
     "&": "&amp;",

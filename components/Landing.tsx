@@ -5,7 +5,7 @@ import { T, type Lang } from "@/lib/i18n";
 import { PAPER } from "@/lib/theme";
 import Header from "./Header";
 import Hero from "./Hero";
-import Services from "./Services";
+import Quote from "./Quote";
 import Process from "./Process";
 import About from "./About";
 import FinalCta from "./FinalCta";
@@ -31,7 +31,7 @@ export default function Landing() {
 
       <Hero t={t} onNavClick={handleNavClick} />
 
-      <Services lang={lang} t={t} onNavClick={handleNavClick} />
+      <Quote lang={lang} onNavClick={handleNavClick} />
 
       <Process t={t} />
 

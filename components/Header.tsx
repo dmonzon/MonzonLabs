@@ -42,7 +42,7 @@ export default function Header({
           style={{ color: NAVY }}
         >
           {[
-            ["services", t.nav.services],
+            ["services", t.nav.quote],
             ["process", t.nav.process],
             ["about", t.nav.about],
             ["contact", t.nav.contact],

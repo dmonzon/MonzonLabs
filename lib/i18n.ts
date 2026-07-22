@@ -1,13 +1,13 @@
 export const T = {
   es: {
-    nav: { services: "Servicios", process: "Proceso", about: "Nosotros", contact: "Contacto", cta: "Llamada gratis" },
+    nav: { services: "Servicios", quote: "Cotizador", process: "Proceso", about: "Nosotros", contact: "Contacto", cta: "Llamada gratis" },
     hero: {
       kicker: "Automatización · Desarrollo · Consultoría IT",
       h1a: "Tecnología que trabaja",
       h1b: "por tu negocio.",
       sub: "Automatización con inteligencia artificial, desarrollo web y consultoría IT — con más de 25 años de experiencia haciendo que la tecnología resuelva, no complique.",
       cta1: "Agenda una llamada gratis",
-      cta2: "Ver servicios",
+      cta2: "Cotiza tu proyecto",
       trust: ["25+ años de experiencia en IT", "Puerto Rico · servicio a EE.UU.", "Respuesta en menos de 24 horas"],
     },
     services: {
@@ -159,14 +159,14 @@ export const T = {
   },
 
   en: {
-    nav: { services: "Services", process: "Process", about: "About", contact: "Contact", cta: "Free call" },
+    nav: { services: "Services", quote: "Quote", process: "Process", about: "About", contact: "Contact", cta: "Free call" },
     hero: {
       kicker: "Automation · Development · IT Consulting",
       h1a: "Technology that works",
       h1b: "for your business.",
       sub: "AI-powered automation, web development, and IT consulting — backed by 25+ years of experience making technology solve problems, not create them.",
       cta1: "Book a free call",
-      cta2: "View services",
+      cta2: "Get a quote",
       trust: ["25+ years of IT experience", "Puerto Rico · serving the U.S.", "Replies within 24 hours"],
     },
     services: {
