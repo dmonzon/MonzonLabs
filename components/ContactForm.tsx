@@ -2,6 +2,7 @@
 
 import { useActionState, useRef } from "react";
 import { sendContactMessage } from "@/lib/actions";
+import FormShield from "./FormShield";
 import { NAVY, GOLD, GOLDTINT, PAPER, INKSOFT } from "@/lib/theme";
 import { Translation } from "@/lib/i18n";
 
@@ -42,7 +43,7 @@ export default function ContactForm({ t }: ContactFormProps) {
           }}
         >
           <p className="font-bold text-lg" style={{ color: "#C41E1E" }}>
-            ✗ {state.error}
+            ✗ {state.error === "captcha" ? t.contact.captchaError : state.error}
           </p>
         </div>
       ) : null}
@@ -91,6 +92,9 @@ export default function ContactForm({ t }: ContactFormProps) {
             placeholder={t.contact.msg + " *"}
             required
           />
+
+          <FormShield action="contact" />
+
           <button
             type="submit"
             disabled={isPending}

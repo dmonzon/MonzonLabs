@@ -1,12 +1,48 @@
 "use server";
 
 import { Resend } from "resend";
+import { guardSubmission } from "./antispam";
+import { T } from "./i18n";
+import { getQuoteConfig } from "./quote";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 interface ContactFormState {
   ok?: boolean;
+  /**
+   * Mensaje a mostrar, o el código `"captcha"` — el cliente lo traduce al
+   * idioma activo.
+   */
   error?: string;
+}
+
+/** Opciones reales del `<select name="need">`, en ambos idiomas. */
+const NEED_OPTIONS: readonly string[] = [
+  ...T.es.contact.needOpts,
+  ...T.en.contact.needOpts,
+];
+
+/**
+ * Etiquetas válidas del cotizador en ambos idiomas. El formulario de cotización
+ * las manda en campos ocultos, así que cualquier otro valor significa que el
+ * envío no vino de la interfaz real.
+ */
+let catalogCache: { categories: string[]; products: string[] } | null = null;
+
+function catalogLabels() {
+  if (catalogCache) return catalogCache;
+
+  const categories: string[] = [];
+  const products: string[] = [];
+  for (const lang of ["es", "en"] as const) {
+    for (const cat of getQuoteConfig(lang).categories) {
+      categories.push(cat.label);
+      for (const p of cat.products) products.push(p.label);
+    }
+  }
+
+  catalogCache = { categories, products };
+  return catalogCache;
 }
 
 export async function sendContactMessage(
@@ -21,6 +57,22 @@ export async function sendContactMessage(
 
   if (!name || !email || !msg) {
     return { error: "Falta información requerida" };
+  }
+
+  const guard = await guardSubmission(
+    formData,
+    { name, email, phone, body: `${need}\n${msg}` },
+    { need: NEED_OPTIONS }
+  );
+
+  if (guard.action === "reject") {
+    return { error: "captcha" };
+  }
+  if (guard.action === "drop") {
+    // Respondemos "ok" a propósito: el bot cree que funcionó y no muta su
+    // payload para reintentar. El correo nunca sale.
+    console.warn(`[antispam] contacto descartado — ${guard.reason}`);
+    return { ok: true };
   }
 
   const fromEmail = process.env.RESEND_FROM_EMAIL || "Monzon Labs <danny@monzonlabs.com>";
@@ -75,6 +127,20 @@ export async function sendQuoteRequest(
 
   if (!name || !email) {
     return { error: "Falta información requerida" };
+  }
+
+  const guard = await guardSubmission(
+    formData,
+    { name, email, phone, body: notes },
+    { lang: ["es", "en"], category: catalogLabels().categories, product: catalogLabels().products }
+  );
+
+  if (guard.action === "reject") {
+    return { error: "captcha" };
+  }
+  if (guard.action === "drop") {
+    console.warn(`[antispam] cotización descartada — ${guard.reason}`);
+    return { ok: true };
   }
 
   const fromEmail = process.env.RESEND_FROM_EMAIL || "Monzon Labs <danny@monzonlabs.com>";

@@ -84,6 +84,7 @@ export interface QuoteUI {
   sending: string;
   ok: string;
   error: string;
+  captchaError: string;
   wantExact: string;
   from: string; // "desde" / "from"
 }
@@ -135,6 +136,10 @@ export function getQuoteUI(lang: Lang): QuoteUI {
       "Got it! We've sent the details and will reply within 24 business hours."
     ),
     error: L("Error al enviar. Intenta de nuevo.", "Error sending. Please try again."),
+    captchaError: L(
+      "Completa la verificación de seguridad e intenta de nuevo.",
+      "Please complete the security check and try again."
+    ),
     wantExact: L("¿Prefieres hablarlo?", "Rather talk it through?"),
     from: L("desde", "from"),
   };

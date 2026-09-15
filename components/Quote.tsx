@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { useActionState } from "react";
 import Mark from "./Mark";
 import Reveal from "./Reveal";
+import FormShield from "./FormShield";
 import { sendQuoteRequest } from "@/lib/actions";
 import { NAVY, GOLD, GOLDTINT, PAPER, INKSOFT } from "@/lib/theme";
 import { type Lang } from "@/lib/i18n";
@@ -542,9 +543,11 @@ function EstimateView({
                 placeholder={ui.notesPh}
               />
 
+              <FormShield lang={lang} action="quote" />
+
               {state.error && (
                 <p className="text-sm font-semibold" style={{ color: "#C41E1E" }}>
-                  ✗ {ui.error}
+                  ✗ {state.error === "captcha" ? ui.captchaError : ui.error}
                 </p>
               )}
 
