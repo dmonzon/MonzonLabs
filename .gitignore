@@ -19,3 +19,6 @@ yarn-error.log*
 .pnpm-debug.log*
 
 copy/
+
+# Artefacto de compilación de TypeScript
+tsconfig.tsbuildinfo
