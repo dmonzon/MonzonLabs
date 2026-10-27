@@ -9,7 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "next": "^15.5.20",
+    "next": "^15.5.28",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "resend": "^6.17.1"
@@ -20,9 +20,12 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "^15.5.20",
+    "eslint-config-next": "^15.5.28",
     "eslint-plugin-next": "^0.0.0",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": "24.x"
   }
 }
