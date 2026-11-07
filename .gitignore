@@ -22,3 +22,6 @@ copy/
 
 # Artefacto de compilación de TypeScript
 tsconfig.tsbuildinfo
+
+# Claude Code: permisos locales (pueden contener secretos)
+.claude/settings.local.json
